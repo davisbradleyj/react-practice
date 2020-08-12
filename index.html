@@ -7,12 +7,13 @@
     <title>React App</title>
     <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 </head>
 
 <body>
     <div id='app'></div>
 
-    <script>
+    <script type='text/babel'>
         const name = 'Brad';
         const handle = '@bdavisbradleyj'
 
@@ -59,7 +60,7 @@
         //     React.createElement(HandleComponent,{handle: '@davisbradleyj'}),
         // )
 
-        console.log('wrapperElement: ',wrapperElement)
+        // console.log('wrapperElement: ',wrapperElement)
         ReactDOM.render(
             <App />,
             document.getElementById('app')
