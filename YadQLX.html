@@ -14,26 +14,36 @@
     <div id='app'></div>
 
     <script type='text/babel'>
-        const USER_DATA = {
-            name: 'Tyler McGinnis',
-            img: 'https://avatars0.githubusercontent.com/u/2933430?v=3&s=460',
-            username: 'tylermcginnis'
+        function Avatar(props) {
+            return <img src={props.src} />
         }
-        
+
+        function Label(props) {
+            return <h1>Name: {props.name}</h1>
+        }
+
+        function ScreenName(props) {
+            return <h3>Username: {props.username}</h3>
+        }
+
         function Badge(props) {
             return (
                 <div>
-                    <img src={props.user.img} />
-                    <h1>Name: {props.user.name} </h1>
-                    <h3>username: {props.user.username} </h3>
+                    <Avatar src={props.user.img}/>
+                    <Label name={props.user.name}/>
+                    <ScreenName username={props.user.username} />
                 </div>
             )
         }
 
         ReactDOM.render(
-            <Badge user={USER_DATA} />,
+            <Badge user={{
+                name: 'Tyler McGinnis',
+                img: 'https://avatars0.githubusercontent.com/u/2933430?v=3&s=460',
+                username: 'tylermcginnis'
+            }} />,
             document.getElementById('app')
-        );
+        )
     </script>
 </body>
 
