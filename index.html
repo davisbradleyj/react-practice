@@ -16,27 +16,52 @@
         const name = 'Brad';
         const handle = '@bdavisbradleyj'
 
-        const nameElement = React.createElement(
-            'h1',
-            null,
-            name
-        )
+        function NameComponent(props) {
+            return <h1>{props.name}</h1>
+            // return React.createElement(
+            //     'h1',
+            //     null,
+            //     props.name,
+            // )
+        }
+        // const nameElement = React.createElement(
+        //     'h1',
+        //     null,
+        //     name
+        // )
 
-        const handleElement = React.createElement(
-            'h3',
-            null,
-            handle
-        )
+        function HandleComponent (props) {
+            return <h3>{props.handle} </h3>
+            // return React.createElement(
+            //     'h3',
+            //     null,
+            //     props.handle,
+            // )
+        }
+        // const handleElement = React.createElement(
+        //     'h3',
+        //     null,
+        //     handle
+        // )
+        function App () {
+            return (
+                <div id='container'>
+                    <NameComponent name={name} />
+                    <HandleComponent handle={handle} />
+                </div>
+            )
 
-        const wrapperElement = React.createElement(
-            'div',
-            {id: 'container'},
-            nameElement,
-            handleElement
-        )
+        }
+        // const wrapperElement = React.createElement(
+        //     'div',
+        //     { id: 'container' },
+        //     React.createElement(NameComponent,{name: 'Brad'}),
+        //     React.createElement(HandleComponent,{handle: '@davisbradleyj'}),
+        // )
 
+        console.log('wrapperElement: ',wrapperElement)
         ReactDOM.render(
-            wrapperElement,
+            <App />,
             document.getElementById('app')
         )
     </script>
