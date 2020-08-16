@@ -20,7 +20,8 @@
                     {props.list.map((name) => (
         // react needs a unique key prop in order to figure out what changed
                         <li key={name}>
-                            {name}
+                            <span>{name}</span>
+                            <button onClick={() => props.onRemoveFriend(name)}> Remove  </button>
                         </li>
                     ))}
                 </ul>
@@ -28,16 +29,35 @@
         }
          
         class App extends React.Component {
-            constructor() {
+            constructor(props) {
                 super(props)
+
                 this.state = {
                     friends: ['Adam', 'Ryan', 'Nick']
                 }
+
+                this.handleRemoveFriend = this.handleRemoveFriend.bind(this)
             }
+
+            handleAddFriend() {
+
+            }
+
+            handleRemoveFriend(name) {
+                this.setState((currentState) => {
+                    return {
+                        friends: currentState.friends.filter((friend) => friend !== name)
+                    }
+                })
+            }
+
             render() {
                 return (
                     <div>
-                        <FriendsList list={this.state.friends} />
+                        <FriendsList 
+                            list={this.state.friends}
+                            onRemoveFriend = {this.handleRemoveFriend}
+                         />
                     </div>
                 )
             }
