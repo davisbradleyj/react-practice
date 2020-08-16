@@ -14,17 +14,47 @@
     <div id='app'></div>
 
     <script type='text/babel'>
-        function App() {
+        function FriendsList(props) {
             return (
-                <div>
-                    Hello World
-                </div>
+                <ul>
+                    {props.list.map((name) => (
+        // react needs a unique key prop in order to figure out what changed
+                        <li key={name}>
+                            {name}
+                        </li>
+                    ))}
+                </ul>
             )
         }
+         
+        class App extends React.Component {
+            constructor() {
+                super(props)
+                this.state = {
+                    friends: ['Adam', 'Ryan', 'Nick']
+                }
+            }
+            render() {
+                return (
+                    <div>
+                        <FriendsList list={this.state.friends} />
+                    </div>
+                )
+            }
+        }
+        // function App() {
+        //     const friends = ['Adam', 'Ryan', 'Nick']
+        //     return (
+        //         <div>
+        //             <FriendsList list={friends} />
+        //         </div>
+        //     )
+        // }
         ReactDOM.render(
             <App />,
             document.getElementById('app')
         )
     </script>
 </body>
+
 </html>
