@@ -14,14 +14,28 @@
   <div id='app'></div>
 
   <script type='text/babel'>
-    function FriendsList(props) {
+    function ActiveFriendsList(props) {
       return (
         <ul>
           {props.list.map((name) => (
             // react needs a unique key prop in order to figure out what changed
             <li key={name}>
               <span>{name}</span>
-              <button onClick={() => props.onRemoveFriend(name)}> Remove  </button>
+              <button onClick={() => props.onRemoveFriend(name)}>Remove</button>
+              <button onClick={() => props.onDeactivate()}>Deactivate</button>
+            </li>
+          ))}
+        </ul>
+      )
+    }
+
+    function InactiveFriendsList(props) {
+      return (
+        <ul>
+          {props.list.map((name) => (
+            <li key={name}>
+              <span>{name}</span>
+              <button onClick={() => props.onActivate()}>Activate</button>
             </li>
           ))}
         </ul>
@@ -40,6 +54,7 @@
         this.handleRemoveFriend = this.handleRemoveFriend.bind(this)
         this.updateInput = this.updateInput.bind(this)
         this.handleAddFriend = this.handleAddFriend.bind(this)
+        this.removeAll = this.removeAll.bind(this)
       }
 
       handleAddFriend() {
@@ -59,12 +74,28 @@
         })
       }
 
+      removeAll() {
+        this.setState((currentState) => {
+          return {
+            friends: []
+          }
+        })
+      }
+
+      handleActive() {
+
+      }
+
+      handleDeactivate() {
+
+      }
+
       updateInput(e) {
         const value = e.target.value
-        
+
         // differences - if updating local state based on previous, need to use functional set state
         // if you dont care about what it was previously, you can use the object set state
-        
+
         this.setState({  // object set state
           input: value
         })
@@ -84,9 +115,17 @@
               onChange={this.updateInput}
             />
             <button onClick={this.handleAddFriend}>Submit</button>
-            <FriendsList
+            <button onClick={this.removeAll}>Clear All</button>
+            <h2>Active Friends</h2>
+            <ActiveFriendsList
               list={this.state.friends}
               onRemoveFriend={this.handleRemoveFriend}
+              onDeactivate={this.handleDeactivate}
+            />
+            <h2>Inactive Friends</h2>
+            <InactiveFriendsList
+              list={this.state.friends}
+              onActivate={this.handleActivate}
             />
           </div>
         )
