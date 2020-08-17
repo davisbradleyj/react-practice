@@ -75,6 +75,24 @@
         this.updateInput = this.updateInput.bind(this)
         this.handleAddFriend = this.handleAddFriend.bind(this)
         this.handleToggle = this.handleToggle.bind(this)
+
+        console.log('--constructor--')
+      }
+      
+      componentDidMount() {
+          console.log('--componentDidMount--')
+      }
+
+      componentDidUpdate() {
+        console.log('--componentDidUpdate--')    
+      }
+
+      conponentDiUnmount() {
+        console.log('--componentDidUnount--')    
+      }
+
+      static getDerivedStateFromProps() {
+        // use case, grabs state of local component from props being received
       }
 
       handleAddFriend() {
@@ -129,6 +147,9 @@
       }
 
       render() {
+
+        console.log('--render--')
+
         return (
           <div>
             <input
