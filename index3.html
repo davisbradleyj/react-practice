@@ -13,7 +13,64 @@
 <body>
   <div id='app'></div>
 
+  <script>
+    window.API = {
+      fetchFriends() {
+        return new Promise((res, rej) => {
+          const friends = [
+            {
+              name: 'Adam',
+              active: true,
+            },
+            {
+              name: 'Ryan',
+              active: true,
+            },
+            {
+              name: 'Nick',
+              active: false,
+            },
+          ]
+
+          setTimeout(() => res(friends), 2000)
+        })
+      }
+    }
+  </script>
+
   <script type='text/babel'>
+    class Loading extends React.Component {
+      constructor(props) {
+        super(props)
+
+        this.state = {
+          text: 'Loading'
+        }
+      }
+
+      componentDidMount() {
+        const stopper = this.state.text + '...'
+
+        this.interval = window.setInterval(() => {
+          console.log('RUNNING')
+          this.state.text === stopper
+            ? this.setState({ text: 'Loading' })
+            : this.setState((currentState) => {
+              return {
+                text: currentState.text + '.'
+              }
+            })
+        }, 300)
+      }
+
+      componentWillUnmount() {
+        window.clearInterval(this.interval)
+      }
+      render() {
+        return <p>{this.state.text}</p>
+      }
+    }
+
     function ActiveFriends(props) {
       return (
         <div>
@@ -54,21 +111,9 @@
         super(props)
 
         this.state = {
-          friends: [
-            {
-              name: 'Adam',
-              active: true,
-            },
-            {
-              name: 'Ryan',
-              active: true,
-            },
-            {
-              name: 'Nick',
-              active: false,
-            },
-          ],
+          friends: [],
           input: '',
+          loading: true,
         }
 
         this.handleRemoveFriend = this.handleRemoveFriend.bind(this)
@@ -78,22 +123,29 @@
 
         console.log('--constructor--')
       }
-      
+
       componentDidMount() {
-          console.log('--componentDidMount--')
+        console.log('--componentDidMount--')
+        API.fetchFriends()
+          .then((friends) => {
+            this.setState({
+              friends,
+              loading: false
+            })
+          })
       }
 
       componentDidUpdate() {
-        console.log('--componentDidUpdate--')    
+        console.log('--componentDidUpdate--')
       }
 
-      conponentDiUnmount() {
-        console.log('--componentDidUnount--')    
+      conponentDidUnmount() {
+        console.log('--componentDidUnmount--')
       }
 
-      static getDerivedStateFromProps() {
-        // use case, grabs state of local component from props being received
-      }
+      // static getDerivedStateFromProps() {
+      // use case, grabs state of local component from props being received
+      // }
 
       handleAddFriend() {
         this.setState((currentState) => {
@@ -133,22 +185,18 @@
 
       updateInput(e) {
         const value = e.target.value
-
-        // differences - if updating local state based on previous, need to use functional set state
-        // if you dont care about what it was previously, you can use the object set state
-
-        this.setState({  // object set state
+        this.setState({
           input: value
         })
-
-        // this.setState(() => ({ // functional set state
-        //   input: value
-        // }))
       }
 
       render() {
 
         console.log('--render--')
+
+        if (this.state.loading === true) {
+          return <Loading />
+        }
 
         return (
           <div>
