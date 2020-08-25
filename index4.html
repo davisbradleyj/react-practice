@@ -60,20 +60,88 @@
       }
     }
 
+    function Menu(props) {
+      const languages = ['all', 'javascript', 'python', 'ruby']
+      return (
+        <ul>
+          {languages.map(language => (
+            <li key={language} onClick={() => props.onSelect(language)}>{language}</li>
+          ))}
+        </ul>
+      )
+    }
+
+    function Repos(props) {
+      return (
+        <ul style={{ display: 'flex', flexWrap: 'wrap' }}>
+          {props.repos.map(({ name, owner, count, url }) => (
+            <li key={name} style={{ margin: 30 }}>
+              <ul>
+                <li><a href={url}>{name}</a></li>
+                <li>@{owner.login}</li>
+                <li>{count} Stars</li>
+              </ul>
+            </li>
+          ))}
+        </ul>
+      )
+    }
+
     class App extends React.Component {
-      constructor(props){
+      constructor(props) {
         super(props)
         this.state = {
-          ,
-          ,
-          loading:true,
+          activeLanguage: 'all',
+          repos: [],
+          loading: true,
+        }
+        this.handleLanguage = this.handleLanguage.bind(this);
+        this.fetchRepos = this.fetchRepos.bind(this);
+      }
+
+      componentDidMount() {
+        this.fetchRepos(this.state.activeLanguage)
+      }
+
+      componentDidUpdate(prevProps, prevState) {
+        if (prevState.activeLanguage !== this.state.activeLanguage) {
+          this.fetchRepos(this.state.activeLanguage)
         }
       }
-      
+
+      fetchRepos(language) {
+        this.setState({
+          loading: true
+        })
+
+        window.API.fetchPopularRepos(language)
+          .then((data) => {
+            this.setState({
+              repos: data,
+              loading: false,
+            })
+          })
+      }
+
+      handleLanguage(language) {
+        this.setState({
+          activeLanguage: language,
+        })
+      }
+
       render() {
         return (
           <div>
-            
+            <Menu onSelect={this.handleLanguage} />
+            {this.state.loading === true ?
+              <Loading />
+              : <div>
+                <h1 style={{ textAlign: 'center' }}>
+                  {this.state.activeLanguage}
+                </h1>
+                <Repos repos={this.state.repos} />
+              </div>
+            }
           </div>
         )
       }
@@ -85,4 +153,5 @@
     )
   </script>
 </body>
+
 </html>
