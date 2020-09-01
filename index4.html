@@ -63,11 +63,13 @@
     function Menu(props) {
       const languages = ['all', 'javascript', 'python', 'ruby']
       return (
-        <ul>
-          {languages.map(language => (
-            <li key={language} onClick={() => props.onSelect(language)}>{language}</li>
-          ))}
-        </ul>
+        <nav>
+          <ul>
+            {languages.map((language) => (
+              <li key={language} onClick={() => props.onSelect(language)}>{language}</li>
+            ))}
+          </ul>
+        </nav>
       )
     }
 
