@@ -1,5 +1,9 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
+import { Link, Route } from 'react-router-dom'
+
+function Topic({ match }) {
+  return <h3>{match.params.topicId}</h3>
+}
 
 function Topics() {
   return (
@@ -10,6 +14,11 @@ function Topics() {
         <li><Link to='/topics/components'>Components</Link></li>
         <li><Link to='/topics/props-v-state'>Props vs State</Link></li>
       </ul>
+
+      <hr />
+
+      <Route path='/topics/:topicId' component={Topic} />
+
     </div>
   )
 }
