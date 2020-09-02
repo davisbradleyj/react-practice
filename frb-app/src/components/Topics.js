@@ -5,7 +5,7 @@ function Topic(props) {
   return <h3>{props.match.params.topicId}</h3>
 }
 
-function Topics({match}) {
+function Topics({ match }) {
   console.log('match.url', match.url)
   return (
     <div>
@@ -19,6 +19,9 @@ function Topics({match}) {
       <hr />
 
       <Route path={`${match.path}/:topicId`} component={Topic} />
+      <Route exact path={match.url} render={() => {
+        return <h3>Please select a topic</h3>
+      }} />
 
     </div>
   )
