@@ -1,6 +1,19 @@
-import React from 'react';
+import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Person from './Person/Person';
+
+class App extends Component {
+  render() {
+    return (
+      <div className='App'>
+        <h1>Hi, I'm a React App</h1>
+        <p>This is a working app</p>
+        <Person />
+      </div>
+    )
+  }
+}
 
 // function App() {
 //   return (
@@ -23,13 +36,15 @@ import './App.css';
 //   );
 // }
 
-function App(props) {
-  return (
-    <div>
-      {props.name}
-      {props.age}
-    </div>
-  );
-}
+// function App(props) {
+//   return (
+//     <div>
+//       <h1>Hi, I am a React App</h1>
+//       <br />
+//       <h3>Name: {props.name}</h3>
+//       <h3>Age: {props.age}</h3>
+//     </div>
+//   );
+// }
 
 export default App;
