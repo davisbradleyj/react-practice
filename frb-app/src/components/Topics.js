@@ -17,9 +17,9 @@ function Topics({ match }) {
       </ul>
 
       <hr />
-
+      {/* nested routes should use Path, nested Links should use url */}
       <Route path={`${match.path}/:topicId`} component={Topic} />
-      <Route exact path={match.url} render={() => {
+      <Route exact path={match.path} render={() => {
         return <h3>Please select a topic</h3>
       }} />
 
