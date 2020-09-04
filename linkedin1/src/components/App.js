@@ -12,6 +12,7 @@ class App extends Component {
     this.state = {
       name: 'Brad ',
       appointments: [],
+      lastIdx: 0
     };
   }
 
@@ -20,6 +21,8 @@ class App extends Component {
       .then(resp => resp.json())
       .then(result => {
         const appts = result.map(item => {
+          item.aptId = this.state.lastIdx;
+          this.setState({lastIdx: this.state.lastIdx + 1})
           return item
         })
         this.setState({
