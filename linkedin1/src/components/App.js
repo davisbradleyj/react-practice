@@ -35,14 +35,13 @@ class App extends Component {
           <div className="row">
             <div className="col-md-12 bg-white">
               <div className="container">
-                {this.state.name}
                 <AddAppointments />
                 <SearchAppointments />
-                <ListAppointments />
+                <ListAppointments appointments={this.state.appointments} />
               </div>
             </div>
+            </div>
           </div>
-        </div>
       </main>
     );
   }
