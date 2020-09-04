@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 // import React, { setState } from 'react';
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
 import Person from './Person/Person';
 
@@ -64,31 +64,56 @@ class App extends Component {
   switchNameHandler = (newName) => {
     console.log("was clicked!");
     // DON'T DO THIS:  this.state.persons[0].name = "ana"; to change a value of the state
-    this.setState({ 
-      persons: [{ 
-        name: newName, 
-        age: "28", 
-      }, { 
-        name: "ana", 
-        age: "32", 
-      }] 
+    this.setState({
+      persons: [{
+        name: newName,
+        age: "28",
+      }, {
+        name: "ana",
+        age: "32",
+      }]
     });
   }
+
+  nameChangeHandler = (e) => {
+    this.setState({
+      persons: [{
+        name: 'max',
+        age: "28",
+      }, {
+        name: e.target.value,
+        age: "32",
+      }]
+    });
+  }
+
+
   render() {
+
+    const style = {
+      backgroundColor: 'light grey',
+      font: 'inherit',
+      border: '1px solid blue',
+      padding: '8px',
+      cursor: 'pointer',
+    }
     return (
       <div className="App">
         <h1>Hi, I'm a React APP</h1>
         <p>This is really working!</p>
         {/* adding event handler */}
         {/* when assinging the handler do not use () in the end, other wise it will execute the function immediately.  we just want to pass a reference to the function */}
-        <button onClick={this.switchNameHandler.bind(this, 'Maximillian')}>Switch Name</button>
-        <Person 
-        name={this.state.persons[0].name} 
-        age={this.state.persons[0].age} 
-        click={this.switchNameHandler.bind(this, 'Max!')}/>
-        <Person 
-        name={this.state.persons[1].name} 
-        age={this.state.persons[1].age} />
+        <button
+          style={style}
+          onClick={this.switchNameHandler.bind(this, 'Maximillian')}>Switch Name</button>
+        <Person
+          name={this.state.persons[0].name}
+          age={this.state.persons[0].age}
+          click={this.switchNameHandler.bind(this, 'Max!')} />
+        <Person
+          name={this.state.persons[1].name}
+          age={this.state.persons[1].age}
+          change={this.nameChangeHandler} />
       </div>
     );
   }
