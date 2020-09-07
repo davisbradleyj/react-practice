@@ -54,9 +54,11 @@ class App extends Component {
     persons: [{
       name: "max",
       age: "28",
+      username: username,
     }, {
       name: "manu",
       age: "30",
+      username: username,
     }],
     otherAttribute: "something"
   }
@@ -68,9 +70,11 @@ class App extends Component {
       persons: [{
         name: newName,
         age: "28",
+        username: username,
       }, {
         name: "ana",
         age: "32",
+        username: username,
       }]
     });
   }
@@ -80,9 +84,11 @@ class App extends Component {
       persons: [{
         name: 'max',
         age: "28",
+        username: e.target.value,
       }, {
         name: e.target.value,
         age: "32",
+        username: e.target.value
       }]
     });
   }
