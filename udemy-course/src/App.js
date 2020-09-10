@@ -86,7 +86,7 @@ class App extends Component {
 
   togglePersonHandler = () => {
     const doesShow = this.state.showPersons;
-    this.setState({showPersons: !doesShow});
+    this.setState({ showPersons: !doesShow });
   }
 
   render() {
@@ -98,6 +98,26 @@ class App extends Component {
       cursor: 'pointer',
     };
 
+    let persons = null;
+
+    if (this.state.showPersons) {
+      persons = (
+        <div>
+          <Person
+            name={this.state.persons[0].name}
+            age={this.state.persons[0].age}>My Hobbies: Swimming</Person>
+          <Person
+            name={this.state.persons[1].name}
+            age={this.state.persons[1].age}
+            click={this.switchNameHandler.bind(this, 'Max!')}
+            change={this.nameChangeHandler}>My Hobbies: Running</Person>
+          <Person
+            name={this.state.persons[2].name}
+            age={this.state.persons[2].age}>My Hobbies: Coding</Person>
+        </div>
+      )
+    }
+
     return (
       <div className='App'>
         <h1>Hi, Im a react App</h1>
@@ -107,22 +127,7 @@ class App extends Component {
           onClick={this.togglePersonHandler}
         // onClick={() => this.switchNameHandler('Maximilian!!')}
         > Toggle Persons</button>
-        {
-          (this.state.showPersons) ?
-            <div>
-              <Person
-                name={this.state.persons[0].name}
-                age={this.state.persons[0].age}>My Hobbies: Swimming</Person>
-              <Person
-                name={this.state.persons[1].name}
-                age={this.state.persons[1].age}
-                click={this.switchNameHandler.bind(this, 'Max!')}
-                change={this.nameChangeHandler}>My Hobbies: Running</Person>
-              <Person
-                name={this.state.persons[2].name}
-                age={this.state.persons[2].age}>My Hobbies: Coding</Person>
-            </div> : null
-        }
+        {persons}
       </div>
     )
   }
