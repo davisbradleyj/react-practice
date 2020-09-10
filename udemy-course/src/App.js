@@ -1,127 +1,120 @@
 import React, { Component } from 'react';
-// import React, { setState } from 'react';
-// import logo from './logo.svg';
+// import React, { useState } from 'react';
 import './App.css';
 import Person from './Person/Person';
 
-// const app = props => {
 
-//   let [personState, setPersonState] = useState(
-//     {
-//       persons: [{
-//         name: 'brad',
-//         age: '37'
-//       }, {
-//         name: 'max',
-//         age: '28'
-//       }]
-//     })
+// const app = props => {
+//   const [personState, setPersonState] = useState({
+//     persons: [
+//       { name: 'Max', age: 28 },
+//       { name: 'Brad', age: 37 },
+//       { name: 'Cris', age: 29 },
+//     ]
+//   });
+
+//  const [otherState, setOtherState] = useState('some other state');
+
+//  console.log(otherState, setOtherState)
+
 //   const switchNameHandler = () => {
-//     console.log('was clicked')
+//     // console.log('was clicked')
+//     // DONT DO THIS this.state.persons[0].name = 'Maximilian';
 //     setPersonState({
-//       persons: [{
-//         nanme: 'cristina',
-//         age: '28'
-//       }, {
-//         nanme: 'dan',
-//         age: '28'
-//       }]
+//       persons: [
+//         { name: 'Maximilian', age: 28 },
+//         { name: 'Brad', age: 37 },
+//         { name: 'Cris', age: 27 },
+//       ],
+//       otherState: personState.otherState
 //     })
-//   }
+//   };
 
 //   return (
 //     <div className='App'>
-//       <h1>Hi, I'm a React App</h1>
-//       <p>..and I'm working!</p>
-//       <button onClick={switchNameHandler}>Switch Name</button>
+//       <h1>Hi, Im a react App</h1>
+//       <p>This is working</p>
+//       <button onClick={switchNameHandler}> Switch Name</button>
 //       <Person
-//         name={personState.person[0].name}
-//         age={personState.person[0].age} />
+//         name={personState.persons[0].name}
+//         age={personState.persons[0].age} />
 //       <Person
-//         name={personState.person[1].name}
-//         age={personState.person[1].age} />
+//         name={personState.persons[1].name}
+//         age={personState.persons[1].age}>My Hobbies: Running</Person>
+//       <Person
+//         name={personState.persons[2].name}
+//         age={personState.persons[2].age} />
 //     </div>
 //   )
 // }
 
-// **************************************************************
-// OLD WAY of creating components:
-
+// export default app;
 
 class App extends Component {
-  // this will show the same output but using the state property, if the state values are change the page will get re-render
+
   state = {
-    persons: [{
-      name: "max",
-      age: "28",
-      username: username,
-    }, {
-      name: "manu",
-      age: "30",
-      username: username,
-    }],
-    otherAttribute: "something"
-  }
-  // when assinging a method it becomes a function, it will be a property that witholds a function
+    persons: [
+      { name: 'Max', age: 28 },
+      { name: 'Brad', age: 37 },
+      { name: 'Cris', age: 29 },
+    ],
+    otherState: 'some other value'
+  };
+
+
+
   switchNameHandler = (newName) => {
-    console.log("was clicked!");
-    // DON'T DO THIS:  this.state.persons[0].name = "ana"; to change a value of the state
+    // console.log('was clicked')
+    // DONT DO THIS this.state.persons[0].name = 'Maximilian';
     this.setState({
-      persons: [{
-        name: newName,
-        age: "28",
-        username: username,
-      }, {
-        name: "ana",
-        age: "32",
-        username: username,
-      }]
-    });
-  }
+      persons: [
+        { name: newName, age: 28 },
+        { name: 'Brad', age: 37 },
+        { name: 'Cris', age: 27 },
+      ],
+    })
+  };
 
   nameChangeHandler = (e) => {
     this.setState({
-      persons: [{
-        name: 'max',
-        age: "28",
-        username: e.target.value,
-      }, {
-        name: e.target.value,
-        age: "32",
-        username: e.target.value
-      }]
-    });
+      persons: [
+        { name: 'Max', age: 28 },
+        { name: e.target.value, age: 37 },
+        { name: 'Cris', age: 27 },
+      ],
+    })
   }
 
-
   render() {
-
     const style = {
-      backgroundColor: 'light grey',
+      backgroundColor: 'white',
       font: 'inherit',
-      border: '1px solid blue',
+      border: '1x solid blue',
       padding: '8px',
       cursor: 'pointer',
-    }
+    };
+    
     return (
-      <div className="App">
-        <h1>Hi, I'm a React APP</h1>
-        <p>This is really working!</p>
-        {/* adding event handler */}
-        {/* when assinging the handler do not use () in the end, other wise it will execute the function immediately.  we just want to pass a reference to the function */}
-        <button
+      <div className='App'>
+        <h1>Hi, Im a react App</h1>
+        <p>This is working</p>
+        <button 
           style={style}
-          onClick={this.switchNameHandler.bind(this, 'Maximillian')}>Switch Name</button>
+          onClick={() => this.switchNameHandler('Maximilian!!')}> Switch Name</button>
         <Person
           name={this.state.persons[0].name}
-          age={this.state.persons[0].age}
-          click={this.switchNameHandler.bind(this, 'Max!')} />
+          age={this.state.persons[0].age}>My Hobbies: Swimming</Person>
         <Person
           name={this.state.persons[1].name}
           age={this.state.persons[1].age}
-          change={this.nameChangeHandler} />
+          click={this.switchNameHandler.bind(this, 'Max!')}
+          change={this.nameChangeHandler}>My Hobbies: Running</Person>
+        <Person
+          name={this.state.persons[2].name}
+          age={this.state.persons[2].age}>My Hobbies: Coding</Person>
+
       </div>
-    );
+    )
   }
 }
 

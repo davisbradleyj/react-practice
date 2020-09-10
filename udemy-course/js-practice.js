@@ -25,3 +25,32 @@ const printMyName2 = (name) => {
   console.log(name);
 }
 printMyName1('Brad');
+
+// Classes 
+
+class Human {
+  // constructor() {
+  gender = 'male';
+  printGender = () => {
+    console.log(this.gender);
+  }
+}
+
+class Person extends Human {
+  // constructor() {
+  //   super(); // necessary to access parent functions
+    name = 'Brad';
+    gender = 'fluid';
+  
+  printMyName = () => {
+    console.log(this.name)
+  }
+}
+
+const person = new Person();
+person.printMyName();
+person.printGender();
+
+
+// Spread and Rest Operator
+
