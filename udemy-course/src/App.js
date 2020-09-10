@@ -61,8 +61,6 @@ class App extends Component {
     otherState: 'some other value'
   };
 
-
-
   switchNameHandler = (newName) => {
     // console.log('was clicked')
     // DONT DO THIS this.state.persons[0].name = 'Maximilian';
