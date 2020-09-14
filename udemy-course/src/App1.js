@@ -3,7 +3,7 @@ import './App.css';
 import UserInput from './UserInput/UserInput';
 import UserOutput from './UserOutput/UserOutput';
 
-class App1 extends Component {
+class App3 extends Component {
   state = {
     username: 'davisbradleyj'
   };
@@ -26,4 +26,4 @@ class App1 extends Component {
   }
 }
 
-export default App1;
+export default App3;

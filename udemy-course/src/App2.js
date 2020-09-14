@@ -3,7 +3,7 @@ import './App.css';
 import Validation from './Validation/Validation'
 import Char from './Char/Char';
 
-class App2 extends Component {
+class App4 extends Component {
   state = {
     userInput: ''
   }
@@ -42,4 +42,4 @@ class App2 extends Component {
   }
 }
 
-export default App2;
+export default App4;
