@@ -1,4 +1,5 @@
 import React from 'react';
+import Radium from 'radium';
 import './Person.css';
 // import './UserOutput/UserO utput'
 
@@ -25,4 +26,4 @@ const person = ( props ) => {
 //   })
 // }
 
-export default person;
+export default Radium(person);
