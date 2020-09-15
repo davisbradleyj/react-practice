@@ -51,6 +51,20 @@ import Person from './Person/Person';
 
 // export default app;
 
+const StyledButton = styled.button`
+  background-color: ${props => props.alt ? 'red' : 'green'};
+  color: white;
+  font: inherit;
+  border: 1x solid blue;
+  padding: 8px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: ${props => props.alt ? 'salmon' : 'lightgreen'};
+    color: black;
+  }
+  `;
+
 class App extends Component {
 
   state = {
@@ -111,18 +125,18 @@ class App extends Component {
   }
 
   render() {
-    const style = {
-      backgroundColor: 'green',
-      color: 'white',
-      font: 'inherit',
-      border: '1x solid blue',
-      padding: '8px',
-      cursor: 'pointer',
-      ':hover': {
-        backgroundColor: 'lightgreen',
-        color: 'black',
-      },
-    };
+    // const style = {
+    //   backgroundColor: 'green',
+    //   color: 'white',
+    //   font: 'inherit',
+    //   border: '1x solid blue',
+    //   padding: '8px',
+    //   cursor: 'pointer',
+    //   ':hover': {
+    //     backgroundColor: 'lightgreen',
+    //     color: 'black',
+    //   },
+    // };
 
     let persons = null;
 
@@ -150,11 +164,11 @@ class App extends Component {
             age={this.state.persons[2].age}>My Hobbies: Coding</Person> */}
         </div>
       )
-      style.backgroundColor = 'red';
-      style[':hover'] = {
-        backgroundColor: 'salmon',
-        color: 'black',
-      }
+      // style.backgroundColor = 'red';
+      // style[':hover'] = {
+      //   backgroundColor: 'salmon',
+      //   color: 'black',
+      // }
     }
 
     let classes = []
@@ -174,11 +188,16 @@ class App extends Component {
       <div className='App'>
         <h1>Hi, Im a react App</h1>
         <p className={classes.join(' ')}>This is working</p>
-        <button
-          style={style}
+        {/* <button */}
+        <StyledButton
+          // style={style}
+          alt={this.state.showPersons}
           onClick={this.togglePersonHandler}
         // onClick={() => this.switchNameHandler('Maximilian!!')}
-        > Toggle Persons</button>
+        > 
+        Toggle Persons
+        </StyledButton>
+        {/* </button> */}
         {persons}
       </div>
 
