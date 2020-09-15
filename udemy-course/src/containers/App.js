@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import './App.css';
 // import Radium, { StyleRoot } from 'radium';
 import styled from 'styled-components';
-import Person from './Person/Person';
+import Person from '../components/Persons/Person/Person';
 
 // const app = props => {
 //   const [personState, setPersonState] = useState({
@@ -148,7 +148,7 @@ class App extends Component {
               click={() => this.deletePersonHandler(index)}
               name={person.name}
               age={person.age}
-              key={person.id}
+              key={person.id} // must be on the outer element
               changed={(event) => this.nameChangeHandler(event, person.id)} />
           })}
           {/* <Person
