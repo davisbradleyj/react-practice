@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 // import React, { useState } from 'react';
 import './App.css';
-import Radium, { StyleRoot } from 'radium';
+// import Radium, { StyleRoot } from 'radium';
+import styled from 'styled-components';
 import Person from './Person/Person';
-
 
 // const app = props => {
 //   const [personState, setPersonState] = useState({
@@ -170,7 +170,7 @@ class App extends Component {
     }
 
     return (
-      <StyleRoot>
+
       <div className='App'>
         <h1>Hi, Im a react App</h1>
         <p className={classes.join(' ')}>This is working</p>
@@ -181,9 +181,9 @@ class App extends Component {
         > Toggle Persons</button>
         {persons}
       </div>
-      </StyleRoot>
+
     )
   }
 }
 
-export default Radium(App);
+export default App;
