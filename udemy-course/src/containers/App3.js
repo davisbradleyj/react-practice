@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './App.css';
+import classes from './App.module.css';
 import UserInput from '../assets/UserInput/UserInput';
 import UserOutput from '../assets/UserOutput/UserOutput';
 

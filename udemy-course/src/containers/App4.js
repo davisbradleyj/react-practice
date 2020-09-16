@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './App.css';
+import classes from './App.module.css';
 import Validation from '../assets/Validation/Validation'
 import Char from '../assets/Char/Char';
 

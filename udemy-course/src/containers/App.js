@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 // import React, { useState } from 'react';
-import classes from './App.modules.css';
+import classes from './App.module.css';
 // import Radium, { StyleRoot } from 'radium';
 // import styled from 'styled-components';
 import Persons from '../components/Persons/Persons';
@@ -52,17 +52,17 @@ import Persons from '../components/Persons/Persons';
 // export default app;
 
 // const StyledButton = styled.button`
-  // background-color: ${props => props.alt ? 'red' : 'green'};
-  // color: white;
-  // font: inherit;
-  // border: 1x solid blue;
-  // padding: 8px;
-  // cursor: pointer;
+// background-color: ${props => props.alt ? 'red' : 'green'};
+// color: white;
+// font: inherit;
+// border: 1x solid blue;
+// padding: 8px;
+// cursor: pointer;
 
-  // &:hover {
-  //   background-color: ${props => props.alt ? 'salmon' : 'lightgreen'};
-  //   color: black;
-  // }
+// &:hover {
+//   background-color: ${props => props.alt ? 'salmon' : 'lightgreen'};
+//   color: black;
+// }
 //   `;
 
 class App extends Component {
@@ -139,14 +139,15 @@ class App extends Component {
     // };
 
     let persons = null;
+    let btnClass = '';
 
     if (this.state.showPersons) {
       persons = (
         <div>
-          <Persons 
-          persons={this.state.persons}
-          clicked={this.deletePersonHandler}
-          changed={this.nameChangeHandler}
+          <Persons
+            persons={this.state.persons}
+            clicked={this.deletePersonHandler}
+            changed={this.nameChangeHandler}
           />
           {/* {this.state.persons.map((person, index) => {
             return <Person
@@ -169,39 +170,35 @@ class App extends Component {
             age={this.state.persons[2].age}>My Hobbies: Coding</Person> */}
         </div>
       )
-      // style.backgroundColor = 'red';
-      // style[':hover'] = {
-      //   backgroundColor: 'salmon',
-      //   color: 'black',
-      // }
+      btnClass = classes.Red;
     }
 
-    let classes = []
+    let assignedClasses = []
 
     if (this.state.persons.length <= 2) {
-      classes.push('red'); // classes = ['red']
+      assignedClasses.push(classes.red); // classes = ['red']
     }
     if (this.state.persons.length <= 1) {
-      classes.push('bold'); // classes = ['bold']
+      assignedClasses.push(classes.bold); // classes = ['bold']
     }
     if (this.state.persons.length < 1) {
-      classes = []
+      assignedClasses = []
     }
 
     return (
 
-      <div className='App'>
+      <div className={classes.App}>
         <h1>Hi, Im a react App</h1>
-        <p className={classes.join(' ')}>This is working</p>
+        <p className={assignedClasses.join(' ')}>This is working</p>
         {/* <button */}
         <button
           // style={style}
           // alt={this.state.showPersons}
-          className='button'
+          className={btnClass}
           onClick={this.togglePersonHandler}
         // onClick={() => this.switchNameHandler('Maximilian!!')}
-        > 
-        Toggle Persons
+        >
+          Toggle Persons
         </button>
         {/* </button> */}
         {persons}
