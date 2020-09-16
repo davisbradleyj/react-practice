@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import './App.css';
 // import Radium, { StyleRoot } from 'radium';
 import styled from 'styled-components';
-import Person from '../components/Persons/Person/Person';
+import Persons from '../components/Persons/Persons';
 
 // const app = props => {
 //   const [personState, setPersonState] = useState({
@@ -143,14 +143,19 @@ class App extends Component {
     if (this.state.showPersons) {
       persons = (
         <div>
-          {this.state.persons.map((person, index) => {
+          <Persons 
+          persons={this.state.persons}
+          clicked={this.deletePersonHandler}
+          changed={this.nameChangeHandler}
+          />
+          {/* {this.state.persons.map((person, index) => {
             return <Person
               click={() => this.deletePersonHandler(index)}
               name={person.name}
               age={person.age}
               key={person.id} // must be on the outer element
               changed={(event) => this.nameChangeHandler(event, person.id)} />
-          })}
+          })} */}
           {/* <Person
             name={this.state.persons[0].name}
             age={this.state.persons[0].age}>My Hobbies: Swimming</Person>
@@ -186,18 +191,7 @@ class App extends Component {
     return (
 
       <div className='App'>
-        <h1>Hi, Im a react App</h1>
-        <p className={classes.join(' ')}>This is working</p>
-        {/* <button */}
-        <StyledButton
-          // style={style}
-          alt={this.state.showPersons}
-          onClick={this.togglePersonHandler}
-        // onClick={() => this.switchNameHandler('Maximilian!!')}
-        > 
-        Toggle Persons
-        </StyledButton>
-        {/* </button> */}
+        
         {persons}
       </div>
 
