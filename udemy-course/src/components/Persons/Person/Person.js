@@ -17,11 +17,11 @@ import classes from './Person.module.css';
 //   }`
 
 const person = (props) => {
-  const style = {
-    '@media (min-width: 500px)': {
-      width: '350px'
-    }
-  };
+  // const style = {
+  //   '@media (min-width: 500px)': {
+  //     width: '350px'
+  //   }
+  // };
 
   return (
     // <div className='Person' style={style}>
