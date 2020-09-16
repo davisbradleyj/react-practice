@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 // import React, { useState } from 'react';
-import './App.css';
+import classes from './App.modules.css';
 // import Radium, { StyleRoot } from 'radium';
-import styled from 'styled-components';
+// import styled from 'styled-components';
 import Persons from '../components/Persons/Persons';
 
 // const app = props => {
@@ -51,19 +51,19 @@ import Persons from '../components/Persons/Persons';
 
 // export default app;
 
-const StyledButton = styled.button`
-  background-color: ${props => props.alt ? 'red' : 'green'};
-  color: white;
-  font: inherit;
-  border: 1x solid blue;
-  padding: 8px;
-  cursor: pointer;
+// const StyledButton = styled.button`
+  // background-color: ${props => props.alt ? 'red' : 'green'};
+  // color: white;
+  // font: inherit;
+  // border: 1x solid blue;
+  // padding: 8px;
+  // cursor: pointer;
 
-  &:hover {
-    background-color: ${props => props.alt ? 'salmon' : 'lightgreen'};
-    color: black;
-  }
-  `;
+  // &:hover {
+  //   background-color: ${props => props.alt ? 'salmon' : 'lightgreen'};
+  //   color: black;
+  // }
+//   `;
 
 class App extends Component {
 
@@ -191,7 +191,19 @@ class App extends Component {
     return (
 
       <div className='App'>
-        
+        <h1>Hi, Im a react App</h1>
+        <p className={classes.join(' ')}>This is working</p>
+        {/* <button */}
+        <button
+          // style={style}
+          // alt={this.state.showPersons}
+          className='button'
+          onClick={this.togglePersonHandler}
+        // onClick={() => this.switchNameHandler('Maximilian!!')}
+        > 
+        Toggle Persons
+        </button>
+        {/* </button> */}
         {persons}
       </div>
 

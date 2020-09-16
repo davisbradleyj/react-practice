@@ -1,6 +1,6 @@
 import React from 'react';
 // import Radium from 'radium';
-import './Person.css';
+import classes from './Person.module.css';
 // import './UserOutput/UserOutput';
 import styled from 'styled-components';
 
