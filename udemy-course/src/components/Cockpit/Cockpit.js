@@ -7,7 +7,7 @@ const Cockpit = (props) => {
     setTimeout(() => {
       alert('Saved Data')
     }, 1000);
-  });
+  }, []); // sets the field dependency, or none if empty array
 
   const assignedClasses = [];
   let btnClass = '';
