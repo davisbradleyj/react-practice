@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 // import Radium from 'radium';
 import classes from './Person.module.css';
 // import './UserOutput/UserOutput';
@@ -16,22 +16,24 @@ import classes from './Person.module.css';
 //     width: 450px;
 //   }`
 
-const person = (props) => {
-  // const style = {
-  //   '@media (min-width: 500px)': {
-  //     width: '350px'
-  //   }
-  // };
-  console.log('[Person.js] rendering...')
-  return (
-    // <div className='Person' style={style}>
-    <div className={classes.Person}>
-      <p onClick={props.click} > I'm {props.name} and I am {props.age} years old!</p>
-      <p> {props.children}</p >
-      <input type='text' onChange={props.changed} value={props.name} width='100px' />
-      {/* <UserOutput /> */}
-    </div>
-  )
+class Person extends Component {
+  render() {
+    // const style = {
+    //   '@media (min-width: 500px)': {
+    //     width: '350px'
+    //   }
+    // };
+    console.log('[Person.js] rendering...')
+    return (
+      // <div className='Person' style={style}>
+      <div className={classes.Person}>
+        <p onClick={this.props.click} > I'm {this.props.name} and I am {this.props.age} years old!</p>
+        <p> {this.props.children}</p >
+        <input type='text' onChange={this.props.changed} value={this.props.name} width='100px' />
+        {/* <UserOutput /> */}
+      </div>
+    )
+  }
 }
 
 // class Person extends Component {
@@ -46,4 +48,4 @@ const person = (props) => {
 //   })
 // }
 
-export default person;
+export default Person;
