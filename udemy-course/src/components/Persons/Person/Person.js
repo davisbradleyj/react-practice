@@ -22,7 +22,7 @@ const person = (props) => {
   //     width: '350px'
   //   }
   // };
-
+  console.log('[Person.js] rendering...')
   return (
     // <div className='Person' style={style}>
     <div className={classes.Person}>
