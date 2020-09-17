@@ -8,7 +8,7 @@ import App4 from './containers/App4';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <App appTitle='Person Manager'/>
   </React.StrictMode>,
   document.getElementById('root')
 );
