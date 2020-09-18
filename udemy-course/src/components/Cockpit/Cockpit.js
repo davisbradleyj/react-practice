@@ -4,10 +4,13 @@ import classes from './Cockpit.module.css'
 const Cockpit = (props) => {
   useEffect(() => {
     console.log('[Cockpit.js] useEffect')
+    // http request...
+    // const timer = 
     setTimeout(() => {
       alert('Saved Data')
     }, 1000);
     return () => {
+      // clearTimeout(timer);
       console.log('[Cockpit.js] cleanup work in useEffect')
     }
   }, []); // sets the field dependency, or none if empty array
