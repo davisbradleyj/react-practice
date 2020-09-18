@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 // import Radium from 'radium';
 import Aux from '../../../hoc/Aux'
 import classes from './Person.module.css';
@@ -26,7 +26,7 @@ class Person extends Component {
     // };
     console.log('[Person.js] rendering...')
     return (
-    <Aux>
+    <Fragment>
       {/* <div className='Person' style={style}>
       <div className={classes.Person}> */}
         <p onClick={this.props.click} > I'm {this.props.name} and I am {this.props.age} years old!</p>
@@ -34,7 +34,7 @@ class Person extends Component {
         <input type='text' onChange={this.props.changed} value={this.props.name} width='100px' />
         {/* <UserOutput /> */}
       {/* </div> */}
-    </Aux>
+    </Fragmet>
     )
   }
 }
