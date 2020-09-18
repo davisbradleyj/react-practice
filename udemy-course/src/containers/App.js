@@ -5,7 +5,8 @@ import classes from './App.module.css';
 // import styled from 'styled-components';
 import Persons from '../components/Persons/Persons';
 import Cockpit from '../components/Cockpit/Cockpit';
-import WithClass from '../hoc/WithClass';
+import withClass from '../hoc/withClass';
+import Aux from '../hoc/Aux';
 
 // const app = props => {
 //   const [personState, setPersonState] = useState({
@@ -184,8 +185,8 @@ class App extends Component {
     }
 
     return (
-
-      <WithClass classes={classes.App}>
+      <Aux>
+        {/* <WithClass classes={classes.App}> */}
         <button
           onClick={() => {
             this.setState({ showCockpit: false });
@@ -201,10 +202,10 @@ class App extends Component {
             clicked={this.togglePersonHandler}
           /> : null}
         {persons}
-      </WithClass>
-
+        {/* </WithClass> */}
+      </Aux>
     )
   }
 }
 
-export default App;
+export default withClass(App, classes.App);

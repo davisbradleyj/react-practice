@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 // import Radium from 'radium';
 import Aux from '../../../hoc/Aux'
 import classes from './Person.module.css';
+import withClass from '../../../hoc/withClass';
 // import './UserOutput/UserOutput';
 // import styled from 'styled-components';
 
@@ -51,4 +52,4 @@ class Person extends Component {
 //   })
 // }
 
-export default Person;
+export default withClass(Person, classes.Person);
