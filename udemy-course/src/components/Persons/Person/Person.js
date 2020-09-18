@@ -34,7 +34,7 @@ class Person extends Component {
         <input type='text' onChange={this.props.changed} value={this.props.name} width='100px' />
         {/* <UserOutput /> */}
       {/* </div> */}
-    </Fragmet>
+    </Fragment>
     )
   }
 }

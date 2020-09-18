@@ -4,7 +4,8 @@ import classes from './App.module.css';
 // import Radium, { StyleRoot } from 'radium';
 // import styled from 'styled-components';
 import Persons from '../components/Persons/Persons';
-import Cockpit from '../components/Cockpit/Cockpit'
+import Cockpit from '../components/Cockpit/Cockpit';
+import WithClass from '../hoc/WithClass';
 
 // const app = props => {
 //   const [personState, setPersonState] = useState({
@@ -184,7 +185,7 @@ class App extends Component {
 
     return (
 
-      <div className={classes.App}>
+      <WithClass classes={classes.App}>
         <button
           onClick={() => {
             this.setState({ showCockpit: false });
@@ -200,7 +201,7 @@ class App extends Component {
             clicked={this.togglePersonHandler}
           /> : null}
         {persons}
-      </div>
+      </WithClass>
 
     )
   }
