@@ -9,7 +9,7 @@ class Persons extends PureComponent {
 
 
   // PureComponent automatically incorporates a check on all props passed through 
-  
+
   // shouldComponentUpdate(nextProps, nextState) {
   //   console.log('[Persons.js] shouldComponentUpdate');
   //   if (
@@ -47,7 +47,9 @@ class Persons extends PureComponent {
           name={person.name}
           age={person.age}
           key={person.id} // must be on the outer element
-          changed={(event) => this.props.changed(event, person.id)} />
+          changed={(event) => this.props.changed(event, person.id)} 
+          isAuth={props.isAuthenticated}
+          />
       );
     });
   };
