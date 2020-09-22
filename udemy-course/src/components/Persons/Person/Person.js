@@ -31,6 +31,7 @@ class Person extends Component {
   componentDidMount() {
     this.inputElementRef.current.focus(); // works only in class based components (not functional)
     // document.querySelector('input').focus(); // general DOM selector and not optimal for selecting an element
+    console.log(this.context.authenticated)
   }
 
   render() {
@@ -44,12 +45,7 @@ class Person extends Component {
       <Fragment>
         {/* <div className='Person' style={style}>
       <div className={classes.Person}> */}
-      <AuthContext.Consumer>
-        {(context) => 
-          context.authenticated ? <p>Authenticated</p> : <p>Please log in!</p>
-        }
-      </AuthContext.Consumer>
-      
+        {this.context.authenticated ? <p>Authenticated</p> : <p>Please log in!</p>}
         <p onClick={this.props.click} > I'm {this.props.name} and I am {this.props.age} years old!</p>
         <p key='i2'> {this.props.children}</p >
         <input
