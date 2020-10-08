@@ -9,7 +9,7 @@ class Ingredients extends Component {
 
     switch ( this.props.type ) {
       case ('bun-bottom'):
-        ingredient = <div className={classes.BreadBottom}> </div>
+        ingredient = <div className={classes.BunBottom}> </div>
         break;
       case ('bun-top'):
         ingredient = (
@@ -38,9 +38,9 @@ class Ingredients extends Component {
   }
 };
 
-Ingredients.PropTypes = {
+Ingredients.propTypes = {
   type: PropTypes.string.isRequired
 }
 
-export default Ingredient;
+export default Ingredients;
 
