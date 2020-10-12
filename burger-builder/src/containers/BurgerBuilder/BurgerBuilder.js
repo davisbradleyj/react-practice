@@ -1,10 +1,10 @@
 // class based component to manage state
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import Aux from '../../hoc/Aux'
 import Burger from '../../components/Burger/Burger'
 import BuildControls from '../../components/Burger/BuildControls/BuildControls';
 
-const ING_PRICES = {
+const INGREDIENT_PRICES = {
   salad: 0.49,
   cheese: 0.49,
   meat: 1.49,
@@ -19,32 +19,42 @@ class BurgerBuilder extends Component {
       cheese: 0,
       meat: 0,
     },
-    totalPrice: 3.99
+    totalPrice: 3.99,
   }
 
   addIngHandler = (type) => {
     let oldCount = this.state.ingredient[type];
-    let updatedCount = oldCount++;
+    let updatedCount = oldCount + 1;
     let updatedIng = {
       ...this.state.ingredient
     };
     updatedIng[type] = updatedCount;
-    let priceAddition = ING_PRICES[type];
+    let priceAddition = INGREDIENT_PRICES[type];
     let oldPrice = this.state.totalPrice;
     let newPrice = oldPrice + priceAddition;
-    this.setState({totalPrice: newPrice, ingredient: updatedIng})
+    this.setState({ totalPrice: newPrice, ingredient: updatedIng })
   }
 
   removeIngHandler = (type) => {
+    let oldCount = this.state.ingredient[type];
+    let updatedCount = oldCount - 1;
+    let updatedIng = {
+      ...this.state.ingredient
+    };
+    updatedIng[type] = updatedCount;
+    let priceDeduction = INGREDIENT_PRICES[type];
+    let oldPrice = this.state.totalPrice;
+    let newPrice = oldPrice - priceDeduction;
+    this.setState({ totalPrice: newPrice, ingredient: updatedIng })
+  }
 
-  } 
-
-  render () {
+  render() {
     return (
       <Aux>
-        <Burger ingredient={this.state.ingredient}/>
-        <BuildControls 
-          ingredientAdded={this.addIngHandler}/>
+        <Burger ingredient={this.state.ingredient} />
+        <BuildControls
+          ingredientAdded={this.addIngHandler}
+          ingredientRemoved={this.removeIngHandler} />
       </Aux>
     );
   };
