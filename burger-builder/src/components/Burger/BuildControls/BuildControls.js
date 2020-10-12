@@ -4,7 +4,8 @@ import BuildControl from './BuildControl/BuildControl';
 
 // could be hard coded, but this will allow a loop
 const controls = [
-  { label: 'Salad', type: 'salad' },
+  { label: 'Lettuce', type: 'lettuce' },
+  { label: 'Tomato', type: 'tomato' },
   { label: 'Bacon', type: 'bacon' },
   { label: 'Cheese', type: 'cheese' },
   { label: 'Meat', type: 'meat' },

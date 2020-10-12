@@ -86,29 +86,37 @@
   width: 80%;
   height: 8%;
   background: linear-gradient(#7f3608, #702e05);
-  margin: 2% auto;
+  margin: 1.5% auto;
   border-radius: 15px;
 }
 
 .Cheese {
   width: 90%;
   height: 4.5%;
-  margin: 2% auto;
+  margin: 1.5% auto;
   background: linear-gradient(#f4d004, #d6bb22);
   border-radius: 20px;
 }
 
-.Salad {
-  width: 85%;
-  height: 7%;
-  margin: 2% auto;
+.Lettuce {
+  width: 83%;
+  height: 5%;
+  margin: 1.5% auto;
   background: linear-gradient(#228c1d, #91ce50);
   border-radius: 20px;
+}
+
+.Tomato {
+  width: 78%;
+  height: 6%;
+  margin: 1.5% auto;
+  background: linear-gradient(#8c1d1d, #aa2626);
+  border-radius: 10px;
 }
 
 .Bacon {
   width: 80%;
   height: 3%;
   background: linear-gradient(#bf3813, #c45e38);
-  margin: 2% auto;
+  margin: 1.5% auto;
 }
