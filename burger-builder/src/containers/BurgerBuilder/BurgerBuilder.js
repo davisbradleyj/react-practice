@@ -72,7 +72,15 @@ class BurgerBuilder extends Component {
 
   // triggered from an event, not an arrow function.  user arrow function
   purchaseHandler = () => {
-    this.setState({purchasing: true})
+    this.setState({purchasing: true});
+  }
+
+  purchaseCancel = () => {
+    this.setState({purchasing: false});
+  }
+
+  purchaseContinue = () => {
+    alert('Continue');
   }
 
   render() {
@@ -84,8 +92,11 @@ class BurgerBuilder extends Component {
     }
     return (
       <Aux>
-        <Modal show={this.state.purchasing}>
-          <OrderSummary ingredient={this.state.ingredient}/>
+        <Modal show={this.state.purchasing} modalClosed={this.purchaseCancel}>
+          <OrderSummary 
+            ingredient={this.state.ingredient}
+            purchaseCancelled={this.purchaseCancel}
+            purchaseContinued={this.purchaseContinue}/>
         </Modal>
         <Burger ingredient={this.state.ingredient} />
         <BuildControls
