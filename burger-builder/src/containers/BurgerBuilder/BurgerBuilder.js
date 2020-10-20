@@ -25,6 +25,7 @@ class BurgerBuilder extends Component {
     },
     totalPrice: 3.99,
     purchasable: false,
+    purchasing: false,
   }
 
   updatePurchaseState(ingredient) {
@@ -69,6 +70,11 @@ class BurgerBuilder extends Component {
     this.updatePurchaseState(updatedIng);
   }
 
+  // triggered from an event, not an arrow function.  user arrow function
+  purchaseHandler = () => {
+    this.setState({purchasing: true})
+  }
+
   render() {
     const disabledInfo = {
       ...this.state.ingredient
@@ -78,7 +84,7 @@ class BurgerBuilder extends Component {
     }
     return (
       <Aux>
-        <Modal>
+        <Modal show={this.state.purchasing}>
           <OrderSummary ingredient={this.state.ingredient}/>
         </Modal>
         <Burger ingredient={this.state.ingredient} />
@@ -87,7 +93,8 @@ class BurgerBuilder extends Component {
           ingredientRemoved={this.removeIngHandler}
           disabled={disabledInfo}
           purchasable={this.state.purchasable}
-          price={this.state.totalPrice} />
+          price={this.state.totalPrice} 
+          order={this.purchaseHandler}/>
       </Aux>
     );
   };
