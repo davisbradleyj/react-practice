@@ -1,7 +1,15 @@
 import React from 'react';
 
+import classes from './Toggle.module.css'
+
 const toggle = (props) => (
-  <div onClick={props.clicked}>Menu</div>
+  <div
+    className={classes.DrawerToggle}
+    onClick={props.clicked}>
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
 );
 
 export default toggle;
