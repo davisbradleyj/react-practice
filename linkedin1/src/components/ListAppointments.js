@@ -7,20 +7,21 @@ class ListAppointments extends Component {
 
     return (
       <div className="appointment-list item-list mb-3">
-        {this.props.appointments.map(items => (
-          <div className="pet-item col media py-3" key={items.aptId}>
+        {this.props.appointments.map(item => (
+          <div className="pet-item col media py-3" key={item.aptId}>
             <div className="mr-3">
-              <button className="pet-delete btn btn-sm btn-danger">
+              <button className="pet-delete btn btn-sm btn-danger"
+                onClick={()=>this.props.deleteAppointment(item)}>
                 <FaTimes />
               </button>
             </div>
 
             <div className="pet-info media-body">
               <div className="pet-head d-flex">
-                <span className="pet-name">{items.petName}</span>
+                <span className="pet-name">{item.petName}</span>
                 <span className="apt-date ml-auto">
                   <Moment 
-                    date={items.aptDate}
+                    date={item.aptDate}
                     parse="YYYY-MM-dd hh:mm"
                     format="MMM-D h:mma "
                   />
@@ -29,9 +30,9 @@ class ListAppointments extends Component {
 
               <div className="owner-name">
                 <span className="label-item">Owner: </span>
-                <span>{items.ownerName}</span>
+                <span>{item.ownerName}</span>
               </div>
-              <div className="apt-notes">{items.aptNotes}</div>
+              <div className="apt-notes">{item.aptNotes}</div>
             </div>
           </div>
         )
