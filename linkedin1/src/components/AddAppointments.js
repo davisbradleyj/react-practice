@@ -14,6 +14,7 @@ class AddAppointments extends Component {
     }
     // allow handleChange to access this constructor
     this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(event) {
@@ -24,6 +25,28 @@ class AddAppointments extends Component {
     this.setState({
       [name]: value
     })
+  }
+
+  handleSubmit(event) {
+    event.preventDefault();
+    let tempApt = {
+      petName: this.state.petName,
+      ownerName: this.state.ownerName,
+      aptDate: this.state.aptDate + " " + this.state.aptTime,
+      aptNotes: this.state.aptNotes,
+    }
+
+    this.props.addAppointment(tempApt);
+
+    this.setState({
+      petName: '',
+      ownerName: '',
+      aptDate: '',
+      aptTime: '',
+      aptNotes: '',
+    })
+
+    this.props.toggleApptForm();
   }
 
   render() {
@@ -39,7 +62,9 @@ class AddAppointments extends Component {
       </div>
 
         <div className="card-body">
-          <form id="aptForm" noValidate>
+          <form id="aptForm" noValidate
+            onSubmit={this.handleSubmit}
+            >
             <div className="form-group form-row">
               <label
                 className="col-md-2 col-form-label text-md-right"

@@ -19,6 +19,7 @@ class App extends Component {
     // bind proper value of class 'this' statement instead of form version of 'this'
     this.deleteAppointment = this.deleteAppointment.bind(this);
     this.toggleApptForm = this.toggleApptForm.bind(this);
+    this.addAppointment = this.addAppointment.bind(this);
   }
 
   toggleApptForm() {
@@ -27,6 +28,15 @@ class App extends Component {
     });
   }
 
+  addAppointment(apt){
+    let tempApt = this.state.appointments;
+    apt.aptId = this.state.lastIdx;
+    tempApt.unshift(apt);
+    this.setState({
+      appointments: tempApt,
+      lastIdx: this.state.lastIdx + 1,
+    })
+ }
   deleteAppointment(apt) {
     let tempApts = this.state.appointments;
     tempApts = without(tempApts, apt);
@@ -61,6 +71,7 @@ class App extends Component {
                 <AddAppointments
                   formDisplay={this.state.formDisplay}
                   toggleApptForm={this.toggleApptForm}
+                  addAppointment={this.addAppointment}
                   />
                 <SearchAppointments />
                 <ListAppointments 
