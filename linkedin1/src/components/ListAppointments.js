@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import {FaTimes} from 'react-icons/fa';
+import Moment from 'react-moment';
 
 class ListAppointments extends Component {
   render() {
@@ -8,13 +10,21 @@ class ListAppointments extends Component {
         {this.props.appointments.map(items => (
           <div className="pet-item col media py-3" key={items.aptId}>
             <div className="mr-3">
-              <button className="pet-delete btn btn-sm btn-danger">X</button>
+              <button className="pet-delete btn btn-sm btn-danger">
+                <FaTimes />
+              </button>
             </div>
 
             <div className="pet-info media-body">
               <div className="pet-head d-flex">
                 <span className="pet-name">{items.petName}</span>
-                <span className="apt-date ml-auto">{items.aptDate}</span>
+                <span className="apt-date ml-auto">
+                  <Moment 
+                    date={items.aptDate}
+                    parse="YYYY-MM-dd hh:mm"
+                    format="MMM-D h:mma "
+                  />
+                </span>
               </div>
 
               <div className="owner-name">
