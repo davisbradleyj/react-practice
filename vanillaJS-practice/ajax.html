@@ -1,0 +1,14 @@
+<script type="text/javascript">
+  $("button").on("click", function () {
+    $.ajax({
+      type: 'POST',
+      url: 'ajax.php',
+      data: {
+        submission: JSON.stringify({
+          prop: $('text_area').val()
+        })
+      },
+      success: success_callback
+    })
+  })
+</script>
