@@ -1,9 +1,15 @@
-const CTAELELEMENT = document.querySelector(".cta a");
+const FEATURED = document.querySelector(".featured-image");
+const THEIMAGE = FEATURED.querySelector("img");
 
-if (CTAELELEMENT.hasAttribute("target")) {
-  console.log(CTAELELEMENT.getAttribute("target"));
-} else {
-  CTAELELEMENT.setAttribute("target","_blank");
-}
+var altText = THEIMAGE.getAttribute("alt");
 
-console.log(CTAELELEMENT.attributes);
+var captionElement = document.createElement("figcaption");
+
+var captionText = document.createTextNode(altText);
+
+captionElement.appendChild(captionText);
+
+console.log(captionElement)
+
+FEATURED.appendChild(captionElement);
+THEIMAGE.setAttribute("alt","");
