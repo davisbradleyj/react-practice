@@ -5,18 +5,25 @@ const ALERT = document.querySelector("#booking-alert");
 CTA.classList.remove("hide");
 ALERT.classList.add("hide");
 
-function reveal(current) {
+function reveal(e,current) {
   e.preventDefault();
-  CTA.classList.toggle("hide");
+  current.innerHTML == "Book Now!" ? CTA.innerHTML = "Ooops!" : CTA.innerHTML = "Book Now!"
   ALERT.classList.toggle("hide");
 }
 
-CTA.addEventListener('click', reveal, false);
 CTA.addEventListener(
-  'click', 
+  'click',
+  function (e) {
+    reveal(e,this);
+  },
+  false
+);
+
+CTA.addEventListener(
+  'click',
   function () {
     console.log("Button clicked");
   },
   false
-  );
+);
 
