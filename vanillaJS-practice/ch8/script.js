@@ -4,7 +4,9 @@ const originText = document.querySelector("#origin-text p").innerHTML;
 const resetButton = document.querySelector("#reset");
 const theTimer = document.querySelector(".timer");
 
-let timer = [0, 0, 0, 0]
+let timer = [0, 0, 0, 0];
+var interval;
+let timerRunning = false;
 
 // Add leading zero to numbers 9 or below (purely for aesthetics):
 function leadingZero(time) {
@@ -32,6 +34,7 @@ function spellCheck() {
   let originTextMatch = originText.substring(0, textEntered.length);
 
   if (textEntered == originText) {
+    clearInterval(interval);
     testWrapper.style.borderColor = "#429890";
   } else {
     if (textEntered == originTextMatch) {
@@ -46,8 +49,9 @@ function spellCheck() {
 // Start the timer:
 function start() {
   let textEnteredLength = testArea.value.length;
-  if (textEnteredLength === 0) {
-    setInterval(runTimer, 10);
+  if (textEnteredLength === 0 && !timerRunning) {
+    timerRunning = true;
+    interval = setInterval(runTimer, 10);
   }
   console.log(textEnteredLength);
 }
