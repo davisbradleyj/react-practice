@@ -5,6 +5,7 @@ import Burger from '../../components/Burger/Burger'
 import BuildControls from '../../components/Burger/BuildControls/BuildControls';
 import Modal from '../../components/UI/Modal/Modal';
 import OrderSummary from '../../components/Burger/OrderSummary/OrderSummary';
+import axios from '../../axios-orders';
 
 const INGREDIENT_PRICES = {
   lettuce: 0.49,
@@ -80,7 +81,24 @@ class BurgerBuilder extends Component {
   }
 
   purchaseContinue = () => {
-    alert('Continue');
+    // alert('Continue');
+    const ORDER = {
+      ingredient: this.state.ingredient,
+      price: this.state.totalPrice, // would want to recalculate the price on server to prevent alteration on front end
+      customer: {
+        name: "Brad D",
+        address: {
+          street: "Test street",
+          zipCode: "90210",
+          state: "CA"
+          },
+        email: "test@test.com",
+      },
+      deliveryMethod: "fast"
+    }
+    axios.post('/orders.json',ORDER) // For firebase, the path node needs .json to work
+      .then(resp => console.log(resp))
+      .catch(err => console.log(err));
   }
 
   render() {
