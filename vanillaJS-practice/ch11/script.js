@@ -8,6 +8,7 @@ var timer = [0,0,0,0];
 var interval;
 var timerRunning = false;
 
+
 // Add leading zero to numbers 9 or below (purely for aesthetics):
 function leadingZero(time) {
     if (time <= 9) {
@@ -31,14 +32,16 @@ function runTimer() {
 // Match the text entered with the provided text on the page:
 function spellCheck() {
     let textEntered = testArea.value;
+    // console.log("Text entered: ", textEntered);
     let originTextMatch = originText.substring(0,textEntered.length);
 
     if (textEntered == originText) {
+        console.info("Interval Stopped: ", interval)
         clearInterval(interval);
         testWrapper.style.borderColor = "#429890";
     } else {
         if (textEntered == originTextMatch) {
-            testWrapper.style.borderColor = "#65CCf3";
+            testWrapper.style.borderColor = "#65CCf3" + originTextMatch + "more string";
         } else {
             testWrapper.style.borderColor = "#E95D0F";
         }
@@ -46,12 +49,18 @@ function spellCheck() {
 
 }
 
+let test = 0;
 // Start the timer:
 function start() {
     let textEnterdLength = testArea.value.length;
     if (textEnterdLength === 0 && !timerRunning) {
+        // if (test>=1) {
+        //     console.error("The start function is triggered")
+        // }
         timerRunning = true;
         interval = setInterval(runTimer, 10);
+        test++;
+        console.info(interval);
     }
 }
 
