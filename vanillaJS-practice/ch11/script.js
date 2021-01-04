@@ -49,7 +49,6 @@ function spellCheck() {
 
 }
 
-let test = 0;
 // Start the timer:
 function start() {
     let textEnterdLength = testArea.value.length;
@@ -59,7 +58,6 @@ function start() {
         // }
         timerRunning = true;
         interval = setInterval(runTimer, 10);
-        test++;
         console.info(interval);
     }
 }
