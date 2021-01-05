@@ -6,6 +6,7 @@ import BuildControls from '../../components/Burger/BuildControls/BuildControls';
 import Modal from '../../components/UI/Modal/Modal';
 import OrderSummary from '../../components/Burger/OrderSummary/OrderSummary';
 import axios from '../../axios-orders';
+import Spinner from '../../components/UI/Spinner/Spinner';
 
 const INGREDIENT_PRICES = {
   lettuce: 0.49,
@@ -27,6 +28,7 @@ class BurgerBuilder extends Component {
     totalPrice: 3.99,
     purchasable: false,
     purchasing: false,
+    loading: false,
   }
 
   updatePurchaseState(ingredient) {
@@ -73,15 +75,16 @@ class BurgerBuilder extends Component {
 
   // triggered from an event, not an arrow function.  user arrow function
   purchaseHandler = () => {
-    this.setState({purchasing: true});
+    this.setState({ purchasing: true });
   }
 
   purchaseCancel = () => {
-    this.setState({purchasing: false});
+    this.setState({ purchasing: false });
   }
 
   purchaseContinue = () => {
     // alert('Continue');
+    this.setState({ loading: true })
     const ORDER = {
       ingredient: this.state.ingredient,
       price: this.state.totalPrice, // would want to recalculate the price on server to prevent alteration on front end
@@ -91,14 +94,26 @@ class BurgerBuilder extends Component {
           street: "Test street",
           zipCode: "90210",
           state: "CA"
-          },
+        },
         email: "test@test.com",
       },
       deliveryMethod: "fast"
     }
-    axios.post('/orders.json',ORDER) // For firebase, the path node needs .json to work
-      .then(resp => console.log(resp))
-      .catch(err => console.log(err));
+    axios.post('/orders.json', ORDER) // For firebase, the path node needs .json to work
+      .then(resp => {
+        this.setState({
+          loading: false,
+          purchasing: false,
+        })
+        console.log(resp)
+      })
+      .catch(err => {
+        this.setState({
+          loading: false,
+          purchasing: false,
+        })
+        console.log(err)
+      });
   }
 
   render() {
@@ -108,14 +123,21 @@ class BurgerBuilder extends Component {
     for (let key in disabledInfo) {
       disabledInfo[key] = disabledInfo[key] <= 0
     }
+
+    // controls the appearance of the UI Spinner depending on state of loading
+    let orderSummary = <OrderSummary
+      ingredient={this.state.ingredient}
+      price={this.state.totalPrice}
+      purchaseCancelled={this.purchaseCancel}
+      purchaseContinued={this.purchaseContinue} />
+
+    if (this.state.loading) {
+      orderSummary = <Spinner />
+    }
     return (
       <Aux>
         <Modal show={this.state.purchasing} modalClosed={this.purchaseCancel}>
-          <OrderSummary 
-            ingredient={this.state.ingredient}
-            price={this.state.totalPrice}
-            purchaseCancelled={this.purchaseCancel}
-            purchaseContinued={this.purchaseContinue}/>
+          {orderSummary}
         </Modal>
         <Burger ingredient={this.state.ingredient} />
         <BuildControls
@@ -123,8 +145,8 @@ class BurgerBuilder extends Component {
           ingredientRemoved={this.removeIngHandler}
           disabled={disabledInfo}
           purchasable={this.state.purchasable}
-          price={this.state.totalPrice} 
-          order={this.purchaseHandler}/>
+          price={this.state.totalPrice}
+          order={this.purchaseHandler} />
       </Aux>
     );
   };
