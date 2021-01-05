@@ -7,6 +7,7 @@ import Modal from '../../components/UI/Modal/Modal';
 import OrderSummary from '../../components/Burger/OrderSummary/OrderSummary';
 import axios from '../../axios-orders';
 import Spinner from '../../components/UI/Spinner/Spinner';
+import errorHandler from '../../hoc/errorHandler/errorHandler';
 
 const INGREDIENT_PRICES = {
   lettuce: 0.49,
@@ -85,7 +86,7 @@ class BurgerBuilder extends Component {
   purchaseContinue = () => {
     // alert('Continue');
     this.setState({ loading: true })
-    const ORDER = {
+    const order = {
       ingredient: this.state.ingredient,
       price: this.state.totalPrice, // would want to recalculate the price on server to prevent alteration on front end
       customer: {
@@ -99,7 +100,7 @@ class BurgerBuilder extends Component {
       },
       deliveryMethod: "fast"
     }
-    axios.post('/orders.json', ORDER) // For firebase, the path node needs .json to work
+    axios.post('/orders.json', order) // For firebase, the path node needs .json to work
       .then(resp => {
         this.setState({
           loading: false,
@@ -134,6 +135,7 @@ class BurgerBuilder extends Component {
     if (this.state.loading) {
       orderSummary = <Spinner />
     }
+
     return (
       <Aux>
         <Modal show={this.state.purchasing} modalClosed={this.purchaseCancel}>
@@ -152,4 +154,4 @@ class BurgerBuilder extends Component {
   };
 };
 
-export default BurgerBuilder;
+export default errorHandler(BurgerBuilder, axios);
