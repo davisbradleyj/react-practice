@@ -18,6 +18,10 @@ const errorHandler = (WrappedComponent, axios) => {
       });
     }
 
+    componentWillUnmount () {
+      
+    }
+
     errorConfirmedHandler = () => {
       this.setState({ error: null });
     }
