@@ -1,154 +1,152 @@
-<!DOCTYPE html> 
-<html lang="en"> 
-  
-<head> 
-    <meta charset="UTF-8"> 
-    <meta name="viewport" content
-        ="width=device-width, initial-scale=1.0"> 
-    <title>Dice Game</title> 
-  
-    <style> 
-        .container { 
-            width: 70%; 
-            margin: auto; 
-            text-align: center; 
-        } 
-  
-        .dice { 
-            text-align: center; 
-            display: inline-block; 
-            margin-bottom: 5px; 
-        } 
-  
-        body { 
-            background-color: #042f4b; 
-            margin: 0; 
-        } 
-  
-        h1 { 
-            margin: 30px 30px 10px 30px; 
-            font-family: "Lobster", cursive; 
-            text-shadow: 5px 0 #232931; 
-            font-size: 4.5rem; 
-            color: #4ecca3; 
-            text-align: center; 
-        } 
-  
-        p { 
-            font-size: 2rem; 
-            color: #4ecca3; 
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dice Game</title>
+
+    <style>
+        .container {
+            width: 70%;
+            margin: auto;
+            text-align: center;
+        }
+
+        .dice {
+            text-align: center;
+            display: inline-block;
+            margin-bottom: 5px;
+        }
+
+        body {
+            background-color: #042f4b;
+            margin: 0;
+        }
+
+        h1 {
+            margin: 30px 30px 10px 30px;
+            font-family: "Lobster", cursive;
+            text-shadow: 5px 0 #232931;
+            font-size: 4.5rem;
+            color: #4ecca3;
+            text-align: center;
+        }
+
+        p {
+            font-size: 2rem;
+            color: #4ecca3;
             font-family: "Indie Flower", cursive;
             margin-top: 16px;
-            margin-bottom: 16px; 
-        } 
-  
-        img { 
-            width: 100%; 
-        } 
-  
+            margin-bottom: 16px;
+        }
+
+        img {
+            width: 100%;
+        }
+
         .score {
             margin-top: 0px;
             margin-bottom: 20px;
             text-align: center;
-            justify-content: center; 
+            justify-content: center;
             font-size: 3rem;
         }
 
-        .bottom { 
-            padding-top: 10px; 
-        } 
-  
-        .butn { 
-            background: #4ecca3; 
-            font-family: "Indie Flower", cursive; 
-            border-radius: 7px; 
-            color: #ffff; 
-            font-size: 30px; 
-            padding: 16px 25px 16px 25px; 
-            text-decoration: none; 
-        } 
-  
-        .butn:hover { 
-            background: #232931; 
-            text-decoration: none; 
-        } 
-    </style> 
-</head> 
-  
-<body> 
-    <div class="container"> 
-        <h1>Let's Roll</h1> 
-  
-        <div class="dice"> 
-            <p>Dice 1</p> 
-            <img class="img1" src="dice6.png"> 
-        </div> 
-  
-        <div class="dice"> 
-            <p>Dice 2</p> 
-            <img class="img2" src="dice6.png"> 
-        </div> 
+        .bottom {
+            padding-top: 10px;
+        }
 
-        <div class="dice"> 
-            <p>Dice 3</p> 
-            <img class="img3" src="dice6.png"> 
-        </div> 
-  
-        <div class="dice"> 
-            <p>Dice 4</p> 
-            <img class="img4" src="dice6.png"> 
-        </div> 
-    </div> 
+        .butn {
+            background: #4ecca3;
+            font-family: "Indie Flower", cursive;
+            border-radius: 7px;
+            color: #ffff;
+            font-size: 30px;
+            padding: 16px 25px 16px 25px;
+            text-decoration: none;
+        }
+
+        .butn:hover {
+            background: #232931;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Let's Roll</h1>
+
+        <div class="dice">
+            <p>Dice 1</p>
+            <img class="img1" src="dice6.png">
+        </div>
+
+        <div class="dice">
+            <p>Dice 2</p>
+            <img class="img2" src="dice6.png">
+        </div>
+
+        <div class="dice">
+            <p>Dice 3</p>
+            <img class="img3" src="dice6.png">
+        </div>
+
+        <div class="dice">
+            <p>Dice 4</p>
+            <img class="img4" src="dice6.png">
+        </div>
+    </div>
 
     <div class="container">
         <p>Totals:</p>
         <p class="score"></p>
     </div>
-  
-    <div class="container"> 
-        <button type="button" class="butn"
-            onClick="rollTheDice()"> 
-            Roll the Dice 
-        </button> 
-    </div> 
-    </div> 
-  
-    <script> 
-  
+
+    <div class="container">
+        <button type="button" class="butn" onClick="rollTheDice()">
+            Roll the Dice
+        </button>
+    </div>
+    </div>
+
+    <script>
+
         // Function to roll the dice 
-        function rollTheDice() { 
-            setTimeout(function () { 
-                var randomNumber1 = Math.floor(Math.random() * 6) + 1; 
+        function rollTheDice() {
+            setTimeout(function () {
+                var randomNumber1 = Math.floor(Math.random() * 6) + 1;
                 var randomNumber2 = Math.floor(Math.random() * 6) + 1;
                 var randomNumber3 = Math.floor(Math.random() * 6) + 1;
                 var randomNumber4 = Math.floor(Math.random() * 6) + 1;
-                 
-  
-                document.querySelector(".img1").setAttribute("src", 
-                    "dice" + randomNumber1 + ".png"); 
-  
-                document.querySelector(".img2").setAttribute("src", 
-                    "dice" + randomNumber2 + ".png"); 
 
-                document.querySelector(".img3").setAttribute("src", 
-                    "dice" + randomNumber3 + ".png"); 
-  
-                document.querySelector(".img4").setAttribute("src", 
-                    "dice" + randomNumber4 + ".png"); 
 
-                score(randomNumber1,randomNumber2,randomNumber3,randomNumber4);
+                document.querySelector(".img1").setAttribute("src",
+                    "dice" + randomNumber1 + ".png");
 
-            }, 10); 
+                document.querySelector(".img2").setAttribute("src",
+                    "dice" + randomNumber2 + ".png");
+
+                document.querySelector(".img3").setAttribute("src",
+                    "dice" + randomNumber3 + ".png");
+
+                document.querySelector(".img4").setAttribute("src",
+                    "dice" + randomNumber4 + ".png");
+
+                score(randomNumber1, randomNumber2, randomNumber3, randomNumber4);
+
+            }, 10);
         }
-        
-        function score(a,b,c,d){
-            let total = [a,b,c,d]
-            total = total.sort((one,two)=>two-one);
+
+        function score(a, b, c, d) {
+            let total = [a, b, c, d]
+            total = total.sort((one, two) => two - one);
             let best = total[0] + total[1] + total[2];
             document.querySelector('.score').innerHTML = best;
             console.log(best)
         }
-    </script> 
-</body> 
-  
-</html> 
+    </script>
+</body>
+
+</html>
