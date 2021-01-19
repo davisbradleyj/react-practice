@@ -5,47 +5,7 @@ import axios from '../../axios';
 import './Blog.css';
 
 class Blog extends Component {
-    state = {
-        posts: [],
-        selectedPostId: null,
-        error: false,
-    }
-
-    componentDidMount() {
-        axios.get('/posts')
-            .then(response => { //executes once promise resolves
-                const posts = response.data.slice(0, 6);
-                const updatedPosts = posts.map(post => {
-                    return {
-                        ...post,
-                        author: 'Brad',
-                    }
-                })
-                this.setState({ posts: updatedPosts });
-                // console.log(updatedPosts)
-            })
-            .catch(error => {
-                // console.log(error);
-                this.setState({ error: true });
-            })
-    }
-
-    postSelected = (id) => {
-        this.setState({ selectedPostId: id });
-    }
-
     render() {
-        let posts = <p style={{ textAlign: 'center' }}>Something went wrong</p>
-        if (!this.state.error) {
-            posts = this.state.posts.map(post => {
-                return <Post
-                    key={post.id}
-                    title={post.title}
-                    author={post.author}
-                    clicked={() => this.postSelected(post.id)} />
-            });
-        }
-
         return (
             <div className="Blog">
                 <header>
@@ -56,9 +16,7 @@ class Blog extends Component {
                         </ul>
                     </nav>
                 </header>
-                <section className="Posts">
-                    {posts}
-                </section>
+
                 {/* <section>
                     <FullPost id={this.state.selectedPostId} />
                 </section>
