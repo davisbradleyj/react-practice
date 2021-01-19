@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 // import axios from 'axios';
-import axios from '../../axios';
+// import axios from '../../axios';
+import Posts from '../Posts/Posts';
 
 import './Blog.css';
 
@@ -16,7 +17,7 @@ class Blog extends Component {
                         </ul>
                     </nav>
                 </header>
-
+                <Posts />
                 {/* <section>
                     <FullPost id={this.state.selectedPostId} />
                 </section>
