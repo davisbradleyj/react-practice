@@ -14,9 +14,16 @@ class Blog extends Component {
                 <header>
                     <nav>
                         <ul>
-                            <li><NavLink to="/">Home</NavLink></li>
+                            <li><NavLink 
+                                to="/" 
+                                exact
+                                activeClassName="my-active"
+                                activeStyle={{
+                                    color: '#fa923f',
+                                    textDecoration: 'underline'
+                                }}>Home</NavLink></li>
                             <li><NavLink to={{
-                                pathname: this.props.match.url + '/new-post',
+                                pathname: '/new-post',
                                 // hash: '#submit',
                                 // search: '?quick-submit=true'
                             }}>New Post</NavLink></li>
