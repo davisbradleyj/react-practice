@@ -45,7 +45,6 @@ class Posts extends Component {
             to={'/' + post.id}
             key={post.id}>
             <Post
-
               title={post.title}
               author={post.author}
               clicked={() => this.postSelected(post.id)} />
