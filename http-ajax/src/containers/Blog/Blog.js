@@ -34,6 +34,7 @@ class Blog extends Component {
         <Switch>
           <Route path="/new-post" component={NewPost} />
           <Route path="/posts/" component={Posts} />
+          {/* <Route path="/" component={Posts} /> */}
         </Switch>
         {/* <section>
                     <FullPost id={this.state.selectedPostId} />
